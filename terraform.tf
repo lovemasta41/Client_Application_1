@@ -5,15 +5,15 @@ terraform {
       version = ">0.0.1"
     }
   }
-  /*
+  
   backend "azurerm"{  
     
-    resource_group_name="Eops_Demo_Resource_Group"  
-    storage_account_name="eopsterraformbackend"  
-    container_name="eopsstatefiles"  
-    key="client_application_2/client_application_2.tfstate"  
+    #resource_group_name="Eops_Demo_Resource_Group"  
+    #storage_account_name="eopsterraformbackend"  
+    #container_name="eopsstatefiles"  
+    #key="client_application_2/client_application_2.tfstate"  
 
-  } */ 
+  } 
 }
 
 provider "azurerm" {
