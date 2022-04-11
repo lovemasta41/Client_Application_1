@@ -29,7 +29,7 @@ jobs:
       - name: Login with Azure
         uses: azure/login@v1
         with: 
-          creds: '${{ secrets.Azure_Creds }}'
+          creds: '${{ secrets.AZURE_CREDS }}'
       # Runs a set of commands using the runners shell
       #- name: Run a multi-line script
       #  run: |
