@@ -113,7 +113,7 @@ jobs:
         id: validate
         run: terraform validate  
 
-      - name: Terraform Plan
+      - name: Terraform Apply
         id: apply
         run: terraform apply
           -var "vm_admin_password=${{ secrets.VM_PASSWORD }}"
