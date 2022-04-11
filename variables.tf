@@ -3,6 +3,11 @@ variable "resource_group_name" {
   description = "Provide prefix name for you resource groups."
 }
 
+variable "virtual_network_name" {
+  type        = string
+  description = "Provide name for your virtual network."
+}
+
 variable "location" {
   type        = string
   description = "Location in which resource groups needs to be created."
@@ -18,29 +23,6 @@ variable "tags" {
   description = "Tags for your resources."
 }
 
-variable "storage_account_name" {
-  type = string
-  description = "provide name prefix for your storage accounts."
-
-}
-
-variable "storage_account_tier" {
-  type = string
-  description = "provide access_tier for your storage accounts."
-}
-
-variable "storage_account_access_replication_type" {
-  type = string
-  description = "provide account_replication_type for your storage accounts."
-}
-
-variable "resource_prefix" {
-
-  type        = string
-  description = "Unique name to identify your resources and resource group."
-
-}
-
 variable "virtual_network_cidr" {
   type        = list(any)
   description = "CIDR ranger for your virtual network."
@@ -51,9 +33,19 @@ variable "subnets" {
   description = "Provide subnet details for your nics."
 }
 
+variable "nic_name" {
+  type        = string
+  description = "Provide the name of nics to be created. It will automaticall assign index to the name of nics e.g. nic-01,nic-02"
+}
+
 variable "nic_count" {
   type        = number
   description = "Provide the number of nics to be created."
+}
+
+variable "vm_name" {
+  type        = string
+  description = "name for your Vm's where index after name will be automatically assigned."
 }
 
 variable "vm_size" {
@@ -105,5 +97,3 @@ variable "disk_size_gb" {
   type = number
   description = "Size of managed disk in GB."
 }
-
-

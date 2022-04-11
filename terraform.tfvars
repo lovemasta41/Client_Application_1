@@ -1,17 +1,13 @@
-resource_group_name = "eops-auto-505-demo"
+resource_group_name = "eops-auto-505-demo-rg"
 location            = "East US"
-subscription_id     = "505743ae-49da-49ce-b0a4-eeb2cc0f8f0e"
-storage_account_tier = "Standard"
-storage_account_access_replication_type = "LRS"
-storage_account_name = "eopsauto505demo"
+subscription_id     = "ac059662-3e5d-40f9-86bc-fa67bf91d78a"
 tags = {
 
     Name = "Demo"
     Environment = "Non-Prod"
 }
 
-resource_prefix = "eops-auto-505-demo"
-
+virtual_network_name = "eops-auto-505-demo-vnet"
 virtual_network_cidr = ["10.0.0.0/16"]
 subnets = [
 
@@ -25,13 +21,15 @@ subnets = [
   }
 ]
 
-nic_count                  = 1
+vm_name = "eopsautodemo"
+nic_name = "app2-nic"
+nic_count                  = 2
 vm_size                    = "Standard_B2ms"
 vm_admin_username          = "azureadmin"
-vm_count                   = 1
+vm_count                   = 2
 vm_os_storage_account_type = "Standard_LRS"
-vm_sku                     = "7.6"
+vm_sku                     = "2016-Datacenter"
 
-managed_disk_name = "app1_data_disk1"
+managed_disk_name = "app2_data_disk1"
 managed_disk_storage_account_type = "Standard_LRS"
 disk_size_gb = 10
