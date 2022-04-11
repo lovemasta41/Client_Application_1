@@ -1,12 +1,12 @@
 module "app1_resource_group" {
-  source              = "git::https://GEOPS-AUTONOMICS@dev.azure.com/GEOPS-AUTONOMICS/Demo_Client/_git/Terraform_Modules//Modules/Azure/Storage/Resource_Group/Module"
+  source              = "git::https://github.com/lovemasta41/Terraform_Modules//Modules/Azure/Storage/Resource_Group/Module"
   location            = var.location
   resource_group_name = var.resource_group_name
   tags = var.tags
 }
 
 module "app1_storage_account" {
-  source              = "git::https://GEOPS-AUTONOMICS@dev.azure.com/GEOPS-AUTONOMICS/Demo_Client/_git/Terraform_Modules//Modules/Azure/Storage/Storage_Account/Module"
+  source              = "git::https://github.com/lovemasta41/Terraform_Modules//Modules/Azure/Storage/Storage_Account/Module"
   location            = var.location
   storage_account_name = var.storage_account_name
   account_tier = var.storage_account_tier
@@ -18,7 +18,7 @@ module "app1_storage_account" {
 
 module "app1_vnet_subnet" {
 
-  source               = "git::https://GEOPS-AUTONOMICS@dev.azure.com/GEOPS-AUTONOMICS/Demo_Client/_git/Terraform_Modules//Modules/Azure/Network/Virtual Network and Subnets/Module"
+  source               = "git::https://github.com/lovemasta41/Terraform_Modules//Modules/Azure/Network/Virtual Network and Subnets/Module"
   virtual_network_name = var.resource_prefix
   resource_group_name  = module.app1_resource_group.name_resource_group
   location             = var.location
@@ -30,7 +30,7 @@ module "app1_vnet_subnet" {
 
 module "app1_nic" {
 
-  source              = "git::https://GEOPS-AUTONOMICS@dev.azure.com/GEOPS-AUTONOMICS/Demo_Client/_git/Terraform_Modules//Modules/Azure/Network/Network Interface Card/Module"
+  source              = "git::https://github.com/lovemasta41/Terraform_Modules//Modules/Azure/Network/Network Interface Card/Module"
   resource_group_name = module.app1_resource_group.name_resource_group
   location            = var.location
   nic_name            = var.resource_prefix
@@ -42,7 +42,7 @@ module "app1_nic" {
 
 #create vms
 module "app1_rhel_vms" {
-  source                     = "git::https://GEOPS-AUTONOMICS@dev.azure.com/GEOPS-AUTONOMICS/Demo_Client/_git/Terraform_Modules//Modules/Azure/Compute/Virtual Machine/rhel_vm_with_user_and_pass/Module"
+  source                     = "git::https://github.com/lovemasta41/Terraform_Modules//Modules/Azure/Compute/Virtual Machine/rhel_vm_with_user_and_pass/Module"
   vm_name                    = var.resource_prefix
   resource_group_name        = module.app1_resource_group.name_resource_group
   location                   = var.location
@@ -57,7 +57,7 @@ module "app1_rhel_vms" {
 }
 
 module "app1_managed_disk" {
-  source = "git::https://GEOPS-AUTONOMICS@dev.azure.com/GEOPS-AUTONOMICS/Demo_Client/_git/Terraform_Modules//Modules/Azure/Compute/disks/Module"
+  source = "git::https://github.com/lovemasta41/Terraform_Modules//Modules/Azure/Compute/disks/Module"
   managed_disk_name = var.managed_disk_name
   resource_group_name = module.app1_resource_group.name_resource_group
   location = var.location
@@ -68,7 +68,7 @@ module "app1_managed_disk" {
 
 #attach disk
 module "attach_managed_disk" {
-  source = "git::https://GEOPS-AUTONOMICS@dev.azure.com/GEOPS-AUTONOMICS/Demo_Client/_git/Terraform_Modules//Modules/Azure/Associations/Attach_Managed_Disk/Module"
+  source = "git::https://github.com/lovemasta41/Terraform_Modules//Modules/Azure/Associations/Attach_Managed_Disk/Module"
   managed_disk_id = module.app1_managed_disk.managed_disk_details.id
   virtual_machine_id = module.app1_rhel_vms.vm_details[0].id
 }
