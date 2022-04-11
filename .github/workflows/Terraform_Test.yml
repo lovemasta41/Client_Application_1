@@ -62,3 +62,18 @@ jobs:
           ARM_CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
           ARM_TENANT_ID: ${{ secrets.CLIENT_TENANT }}
           ARM_SUBSCRIPTION_ID: ${{ secrets.CLIENT_SUBSCRIPTION }}
+
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate
+
+      - name: Terraform Plan
+        id: plan
+        run: terraform plan
+          -var "vm_admin_password=${{ secrets.VM_PASSWORD }}"
+          
+        env:
+          ARM_CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          ARM_CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          ARM_TENANT_ID: ${{ secrets.CLIENT_TENANT }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.CLIENT_SUBSCRIPTION }}
