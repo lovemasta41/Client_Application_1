@@ -113,9 +113,9 @@ jobs:
         id: validate
         run: terraform validate  
 
-      - name: Terraform Destroy
-        id: Destroy
-        run: terraform Destroy
+      - name: Terraform Apply
+        id: Apply
+        run: terraform Apply
           -var "vm_admin_password=${{ secrets.VM_PASSWORD }}"
           --auto-approve
         env:
